@@ -26,7 +26,7 @@ class CustomMinMaxScaler:
 argparser = argparse.ArgumentParser()
 argparser.add_argument('-d', help='Dataset', default='nasdaq2007_17.csv')
 argparser.add_argument('-n', help='Number of timeseries', type=int, default=1)
-argparser.add_argument('-mae', help='Error value', type=float, default=0.9)
+argparser.add_argument('-mae', help='Error value', type=float, default=0.2)
 args = argparser.parse_args()
 
 dataset = args.d
@@ -39,10 +39,10 @@ delay = 200
 max_epochs = 20
 batch_size = 32
 lstm_units = 64
-lstm_layers = 1
+lstm_layers = 2
 dropout = 0.1
 
-experiment_folder = 'experiments'
+experiment_folder = 'experiments_for_layers_2'
 os.makedirs(experiment_folder, exist_ok=True)
 
 # Read dataset
@@ -145,8 +145,6 @@ for i in range(len(testX)):
     print(f'Test sample {i} average loss: {test_loss_avg}')
     test_loss_file.write(f'Test sample {i} average loss: {test_loss_avg}\n')
     # Vriskoume poies times einai panw apo to threshold
-    # Empeirikos tropos ypologismou tou threshold
-    threshold = 0.99 * np.max(test_loss)
     anomalies = np.squeeze(np.argwhere(test_loss > threshold))
     predicted = scaler.inverse_scale(predicted)
     plt.figure()
