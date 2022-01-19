@@ -69,6 +69,7 @@ for i in range(len(data)):
 trainX = np.array(trainX)
 trainY = np.array(trainY)
 trainX = np.expand_dims(trainX, -1)
+
 # Test data
 testX = []
 testY = []
@@ -81,6 +82,7 @@ for i in range(len(data)):
     testX[i] = np.array(testX[i])
     testY[i] = np.array(testY[i])
     testX[i] = np.expand_dims(testX[i], -1)
+
 
 print('Neural network input shape')
 print(f'Train shape: {trainX.shape}')
