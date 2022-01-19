@@ -39,10 +39,10 @@ delay = 200
 max_epochs = 20
 batch_size = 32
 lstm_units = 64
-lstm_layers = 2
+lstm_layers = 1
 dropout = 0.1
 
-experiment_folder = 'experiments_for_layers_2'
+experiment_folder = 'experiments_for_n_3'
 os.makedirs(experiment_folder, exist_ok=True)
 
 # Read dataset
